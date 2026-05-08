@@ -16,11 +16,12 @@ const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const initial = { name: "", email: "", phone: "", company: "", service_type: "", location: "", duration: "", message: "" };
 
 export default function BookingForm() {
-    const [form, setForm] = useState(initial);
+        const [form, setForm] = useState(initial);
     const [date, setDate] = useState(undefined);
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
     const [errors, setErrors] = useState({});
+    const [honeypot, setHoneypot] = useState(""); // anti-spam
 
     const update = (k, v) => {
         setForm((p) => ({ ...p, [k]: v }));
@@ -41,8 +42,10 @@ export default function BookingForm() {
         return Object.keys(e).length === 0;
     };
 
-    const handleSubmit = async (e) => {
+        const handleSubmit = async (e) => {
         e.preventDefault();
+        // Honeypot check — if filled, it's a bot
+        if (honeypot) return;
         if (!validate()) {
             toast.error("Vul de verplichte velden in");
             return;
@@ -162,6 +165,11 @@ export default function BookingForm() {
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} data-testid="booking-form" noValidate className="bg-white rounded-2xl shadow-soft border border-black/5 p-6 md:p-8 space-y-5">
+                                {/* Honeypot — verborgen voor echte gebruikers, zichtbaar voor bots */}
+                                <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0 }}>
+                                    <label htmlFor="website">Website</label>
+                                    <input id="website" name="website" type="text" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
+                                </div>
                                 <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
                                     <div className="space-y-1.5">
                                         <Label className="text-xs font-semibold text-[#2C3E50]/75">Naam *</Label>

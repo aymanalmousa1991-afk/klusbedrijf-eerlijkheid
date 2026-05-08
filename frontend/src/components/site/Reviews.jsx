@@ -126,7 +126,7 @@ export default function Reviews() {
                                     <span className="text-sm text-[#2C3E50]/70">Uw beoordeling:</span>
                                     <div className="flex gap-1">
                                         {[1,2,3,4,5].map((star) => (
-                                            <button key={star} type="button" onClick={() => setFormRating(star)}>
+                                            <button key={star} type="button" onClick={() => setFormRating(star)} aria-label={`${star} van 5 sterren`}>
                                                 <Star size={20} className={star <= formRating ? 'text-[#FFD700] fill-[#FFD700]' : 'text-gray-300'} />
                                             </button>
                                         ))}

@@ -32,16 +32,16 @@ export default function Header() {
             }`}
         >
                         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 flex items-center justify-between h-20 md:h-24">
-                <a
+                                <a
                     href="#top"
                     data-testid="logo-link"
-                    className="flex items-center gap-3 shrink-0"
+                    className="flex items-center gap-2 sm:gap-3 shrink-0 z-50"
                 >
-                    <Logo size={38} className="md:size-[42px]" />
-                    <Wordmark size="md" />
+                    <Logo size={32} className="md:size-[38px]" />
+                    <Wordmark size="sm" />
                 </a>
 
-                                <nav className="hidden lg:flex items-center gap-1">
+                <nav className="hidden lg:flex items-center gap-1" aria-label="Hoofdnavigatie">
                     {links.map((l) => (
                         <a
                             key={l.href}
@@ -58,6 +58,7 @@ export default function Header() {
                     <a
                         href="tel:0643690981"
                         className="flex items-center gap-1.5 text-sm font-bold text-[#2C3E50] hover:text-[#C9960C] transition-colors whitespace-nowrap"
+                        aria-label="Bel 06 4369 0981"
                     >
                         <Phone size={13} className="text-[#C9960C]" />
                         <span className="tracking-tight">06 4369 0981</span>
@@ -65,7 +66,7 @@ export default function Header() {
                     <a
                         href="#aanvragen"
                         data-testid="header-cta"
-                        className="bg-[#B22222] hover:bg-[#8B0000] text-white font-bold text-xs px-4 py-2.5 rounded-md shadow-soft transition-colors whitespace-nowrap"
+                        className="bg-[#B22222] hover:bg-[#8B0000] text-white font-bold text-xs px-4 py-2.5 rounded-md shadow-soft transition-colors whitespace-nowrap inline-flex items-center justify-center min-h-[44px]"
                     >
                         Offerte aanvragen
                     </a>
@@ -73,45 +74,51 @@ export default function Header() {
 
                 <button
                     data-testid="mobile-menu-toggle"
-                    aria-label="Menu"
+                    aria-label={open ? "Sluit menu" : "Open menu"}
+                    aria-expanded={open}
                     onClick={() => setOpen((v) => !v)}
-                    className="lg:hidden p-2 text-[#2C3E50]"
+                    className="lg:hidden p-2 text-[#2C3E50] z-50"
                 >
                     {open ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
-            {open && (
-                <div className="lg:hidden border-t border-gray-100 bg-white">
-                    <div className="px-6 py-5 flex flex-col gap-1">
-                        {links.map((l) => (
-                            <a
-                                key={l.href}
-                                href={l.href}
-                                onClick={() => setOpen(false)}
-                                data-testid={`mobile-nav-${l.label.toLowerCase().replace(/\s/g, "-")}`}
-                                className="py-3 text-base font-semibold text-[#2C3E50] hover:text-[#B8860B] border-b border-gray-100 last:border-0"
-                            >
-                                {l.label}
-                            </a>
-                        ))}
+            {/* Mobile menu with smooth animation */}
+            <div
+                className={`lg:hidden border-t border-gray-100 bg-white overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                }`}
+                aria-hidden={!open}
+            >
+                <div className="px-6 py-5 flex flex-col gap-1">
+                    {links.map((l) => (
                         <a
-                                href="tel:0681932710"
-                                className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-[#2C3E50] py-2"
-                            >
-                                <Phone size={14} className="text-[#C9960C]" /> 06 4369 0981
-                            </a>
-                            <a
-                                href="#aanvragen"
-                                onClick={() => setOpen(false)}
-                                data-testid="mobile-header-cta"
-                                className="mt-1 bg-[#B22222] text-white font-bold text-sm px-5 py-3.5 text-center rounded-md"
-                            >
-                                Offerte aanvragen
-                            </a>
-                    </div>
+                            key={l.href}
+                            href={l.href}
+                            onClick={() => setOpen(false)}
+                            data-testid={`mobile-nav-${l.label.toLowerCase().replace(/\s/g, "-")}`}
+                            className="py-3 text-base font-semibold text-[#2C3E50] hover:text-[#C9960C] border-b border-gray-100 last:border-0 transition-colors"
+                        >
+                            {l.label}
+                        </a>
+                    ))}
+                    <a
+                        href="tel:0643690981"
+                        className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-[#2C3E50] py-2"
+                        aria-label="Bel 06 4369 0981"
+                    >
+                        <Phone size={14} className="text-[#C9960C]" /> 06 4369 0981
+                    </a>
+                    <a
+                        href="#aanvragen"
+                        onClick={() => setOpen(false)}
+                        data-testid="mobile-header-cta"
+                        className="mt-1 bg-[#B22222] text-white font-bold text-sm px-5 py-3.5 text-center rounded-md min-h-[44px] flex items-center justify-center"
+                    >
+                        Offerte aanvragen
+                    </a>
                 </div>
-            )}
+            </div>
         </header>
     );
 }

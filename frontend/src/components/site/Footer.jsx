@@ -16,12 +16,14 @@ export default function Footer() {
                         <p className="text-sm text-white/60 leading-relaxed mb-5 max-w-xs">
                             Uw betrouwbare partner voor stukadoor, tegels, renovatie, verf en uitbouw — heel Nederland. Eerlijk advies, vaste prijzen, vakkundig werk.
                         </p>
-                        <div className="flex items-center gap-2">
-                            {[Linkedin, Instagram, Facebook].map((Icon, i) => (
+                                                <div className="flex items-center gap-2">
+                            {[{ Icon: Linkedin, label: 'LinkedIn' }, { Icon: Instagram, label: 'Instagram' }, { Icon: Facebook, label: 'Facebook' }].map(({ Icon, label }, i) => (
                                 <a
                                     key={i}
                                     href="#"
-                                    aria-label="Social"
+                                    aria-label={label}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#C9960C] flex items-center justify-center transition-colors"
                                 >
                                     <Icon size={14} />

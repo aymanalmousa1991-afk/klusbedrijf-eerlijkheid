@@ -7,18 +7,18 @@
 
 :root {
     --background: 0 0% 100%;
-    --foreground: 210 29% 24%;          /* charcoal #2C3E50 */
+    --foreground: 210 29% 24%;
     --card: 0 0% 100%;
     --card-foreground: 210 29% 24%;
     --popover: 0 0% 100%;
     --popover-foreground: 210 29% 24%;
-    --primary: 358 70% 42%;             /* rood van logo #B22222 */
+    --primary: 358 70% 42%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 29% 24%;           /* charcoal */
+    --secondary: 210 29% 24%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 220 14% 96%;               /* gray-100 */
+    --muted: 220 14% 96%;
     --muted-foreground: 215 16% 47%;
-    --accent: 43 45% 38%;              /* gold #B8860B */
+    --accent: 43 45% 38%;
     --accent-foreground: 210 29% 24%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -28,7 +28,11 @@
     --radius: 0.625rem;
 }
 
-html { scroll-behavior: smooth; }
+/* === ACCESSIBILITY & RESET === */
+* { border-color: hsl(220 13% 91%); }
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 html, body, #root {
     background: #FFFFFF;
@@ -37,15 +41,54 @@ html, body, #root {
 
 body {
     margin: 0;
+    overflow-x: hidden;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-feature-settings: 'cv11','ss01','ss03';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
     font-size: 16px;
+    width: 100%;
+    max-width: 100%;
 }
 
-/* Typography hierarchy */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Skip navigation link (screen reader accessibility) */
+.skip-nav {
+    position: absolute;
+    top: -9999px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #B22222;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 0 0 8px 8px;
+    z-index: 10000;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.skip-nav:focus {
+    top: 0;
+}
+
+/* Focus visible styles for keyboard navigation */
+:focus-visible {
+    outline: 2px solid #C9960C;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Touch target minimum size for mobile */
+button, a, input, select, textarea {
+    min-height: 44px;
+}
+
+/* === TYPOGRAPHY === */
 .font-display {
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 800;
@@ -55,15 +98,13 @@ body {
 
 .font-mono { font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace; font-feature-settings: 'tnum'; }
 
-h1 { font-size: clamp(2.25rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.04; }
-h2 { font-size: clamp(1.75rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; }
-h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+h1 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.04; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; }
+h3 { font-size: clamp(1.2rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
 
 ::selection { background: #B22222; color: #fff; }
 
-/* === MODERNE EFFECTEN === */
-
-/* Scroll reveal met subtielere beweging en schaduw */
+/* === SCROLL REVEAL === */
 .reveal { 
     opacity: 0; 
     transform: translateY(24px); 
@@ -78,21 +119,20 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: 
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* Fade-in voor hero */
+/* === ANIMATIONS === */
 @keyframes fade-in { 
     from { opacity: 0; transform: translateY(12px) scale(0.98); } 
     to { opacity: 1; transform: translateY(0) scale(1); } 
 }
 .animate-fade-in { animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-/* Scale-in voor cards */
 @keyframes scale-in {
     from { opacity: 0; transform: scale(0.92); }
     to { opacity: 1; transform: scale(1); }
 }
 .animate-scale-in { animation: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-/* Glow effect voor accent kleur */
+/* === EFFECTS === */
 .glow-gold {
     box-shadow: 0 0 20px rgba(184, 134, 11, 0.15), 0 0 60px rgba(184, 134, 11, 0.05);
 }
@@ -100,12 +140,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: 
     box-shadow: 0 0 20px rgba(178, 34, 34, 0.15), 0 0 60px rgba(178, 34, 34, 0.05);
 }
 
-/* Subtiele gradient op sections */
 .section-gradient {
     background: linear-gradient(135deg, #FAF8F4 0%, #FFFFFF 50%, #FAF8F4 100%);
 }
 
-/* Hover lift effect voor cards */
 .hover-lift {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -114,7 +152,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: 
     box-shadow: 0 12px 40px -8px rgba(44, 62, 78, 0.12);
 }
 
-/* Text gradient voor speciale titels */
 .text-gradient {
     background: linear-gradient(135deg, #B8860B 0%, #D4A017 50%, #8B6914 100%);
     -webkit-background-clip: text;
@@ -122,12 +159,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: 
     background-clip: text;
 }
 
-/* Border glow gradient */
 .border-gradient {
     border-image: linear-gradient(135deg, #B8860B, #D4A017, #8B6914) 1;
 }
 
-/* Pulse glow voor CTA buttons */
 @keyframes glow-pulse {
     0%, 100% { box-shadow: 0 0 20px rgba(178, 34, 34, 0.2), 0 0 40px rgba(178, 34, 34, 0.1); }
     50% { box-shadow: 0 0 30px rgba(178, 34, 34, 0.3), 0 0 60px rgba(178, 34, 34, 0.15); }
@@ -136,7 +171,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: 
     animation: glow-pulse 2s ease-in-out infinite;
 }
 
-/* Subtiele shimmer voor speciale elementen */
 @keyframes shimmer {
     0% { background-position: -200% center; }
     100% { background-position: 200% center; }
@@ -150,7 +184,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: 
     animation: shimmer 3s linear infinite;
 }
 
-/* Image zoom op hover */
 .img-zoom {
     overflow: hidden;
 }
@@ -161,12 +194,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: 
     transform: scale(1.05);
 }
 
-/* Scrollbar styling */
+/* === SCROLLBAR === */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: #F8FAFC; }
 ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 8px; }
 ::-webkit-scrollbar-thumb:hover { background: #B8860B; }
 
+/* === PULSE RING === */
 @keyframes pulse-ring {
     0% { transform: scale(0.95); opacity: 0.7; }
     70% { transform: scale(1.6); opacity: 0; }
@@ -182,9 +216,42 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 700; letter-spacing: 
     z-index: -1;
 }
 
+/* === SHADOWS === */
 .shadow-soft { box-shadow: 0 1px 2px 0 rgba(44,62,78,0.04), 0 6px 18px -3px rgba(44,62,78,0.08); }
 .shadow-elevated { box-shadow: 0 1px 2px 0 rgba(44,62,78,0.05), 0 14px 40px -10px rgba(44,62,78,0.18); }
 
-/* Responsive container consistency */
-.section-padding { padding-top: clamp(4rem, 8vw, 8rem); padding-bottom: clamp(4rem, 8vw, 8rem); }
-.section-title { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+/* === SECTION PADDING === */
+.section-padding { padding-top: clamp(3rem, 6vw, 6rem); padding-bottom: clamp(3rem, 6vw, 6rem); }
+.section-title { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+
+/* === MARQUEE ANIMATION === */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+    animation: marquee 30s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+        animation: none;
+    }
+    .reveal, .animate-fade-in, .animate-scale-in, .btn-glow, .shimmer-text, .pulse-ring::before {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* === MOBILE NAV ANIMATION === */
+.mobile-nav-enter {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.mobile-nav-enter-active {
+    max-height: 500px;
+    opacity: 1;
+}
