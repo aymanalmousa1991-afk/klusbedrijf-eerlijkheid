@@ -21,7 +21,7 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
+client = AsyncIOMotorClient(mongo_url, serverSelectionTimeoutMS=5000, connectTimeoutMS=5000)
 db = client[os.environ['DB_NAME']]
 
 app = FastAPI(title="Klusbedrijf Eerlijkheid API")
@@ -113,11 +113,15 @@ async def send_notification(subject: str, body: str):
     msg.attach(MIMEText(body, "plain", "utf-8"))
 
     try:
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10) as server:
             server.starttls()
             server.login(SMTP_USER, SMTP_PASS)
             server.send_message(msg)
         logger.info(f"Email notificatie verstuurd: {subject}")
+    except smtplib.SMTPAuthenticationError:
+        logger.error(f"SMTP authenticatie mislukt. Controleer SMTP_USER/SMTP_PASS")
+    except smtplib.SMTPException as e:
+        logger.error(f"SMTP fout: {e}")
     except Exception as e:
         logger.error(f"Email notificatie mislukt: {e}")
 
