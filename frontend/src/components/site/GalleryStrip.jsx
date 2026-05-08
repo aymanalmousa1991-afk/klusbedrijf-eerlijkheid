@@ -32,23 +32,25 @@ export default function GalleryStrip() {
                 </div>
             </div>
 
-            {/* Mobiel: grid met 2 kolommen */}
-            <div className="grid grid-cols-2 gap-3 px-4 sm:px-6 lg:px-10 md:hidden">
-                {images.slice(0, 4).map((src, i) => (
-                    <div
-                        key={i}
-                        className="aspect-[4/3] rounded-2xl overflow-hidden bg-[#2C3E50] relative"
-                    >
-                        <img
-                            src={src}
-                            alt=""
-                            loading="lazy"
-                            onError={(e) => { e.currentTarget.style.opacity = '0.2'; }}
-                            className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50]/50 to-transparent" />
-                    </div>
-                ))}
+            {/* Mobiel: horizontaal scrollbare carousel */}
+            <div className="md:hidden overflow-x-auto px-4 sm:px-6 lg:px-10 -mx-4 sm:-mx-6 lg:-mx-10">
+                <div className="flex gap-3 w-max px-4 sm:px-0">
+                    {images.map((src, i) => (
+                        <div
+                            key={i}
+                            className="shrink-0 w-[260px] aspect-[4/3] rounded-2xl overflow-hidden bg-[#2C3E50] relative snap-center"
+                        >
+                            <img
+                                src={src}
+                                alt=""
+                                loading="lazy"
+                                onError={(e) => { e.currentTarget.style.opacity = '0.2'; }}
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50]/50 to-transparent" />
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* Desktop: marquee */}

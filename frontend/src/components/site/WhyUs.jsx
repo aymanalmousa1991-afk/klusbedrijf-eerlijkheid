@@ -60,15 +60,20 @@ export default function WhyUs() {
                     })}
                 </div>
 
-                {/* Combined extras + CTA */}
+                                {/* Combined extras + CTA */}
                 <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center bg-white/5 border border-white/10 rounded-xl p-7 md:p-10 reveal">
-                    <div className="lg:col-span-7 grid sm:grid-cols-2 gap-x-6 gap-y-3">
-                        {extras.map((p, i) => (
-                            <div key={i} data-testid={`whyus-point-${i}`} className="flex items-start gap-2.5">
-                                <Check size={16} className="text-[#B8860B] mt-1 shrink-0" strokeWidth={3} />
-                                <span className="text-sm md:text-[15px] text-white/85 font-medium">{p}</span>
-                            </div>
-                        ))}
+                    <div className="lg:col-span-7">
+                        <h3 className="font-display text-xl md:text-2xl text-white leading-tight mb-5">
+                            Waar u ons aan <span className="text-[#B8860B]">herkent</span>
+                        </h3>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                            {extras.map((p, i) => (
+                                <div key={i} data-testid={`whyus-point-${i}`} className="flex items-start gap-2.5">
+                                    <Check size={16} className="text-[#B8860B] mt-1 shrink-0" strokeWidth={3} />
+                                    <span className="text-sm md:text-[15px] text-white/85 font-medium">{p}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     <div className="lg:col-span-5 lg:border-l lg:border-white/10 lg:pl-10">
                         <h3 className="font-display text-xl md:text-2xl text-white leading-tight mb-3">

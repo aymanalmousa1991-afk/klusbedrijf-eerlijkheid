@@ -44,20 +44,20 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Column 3: Contact */}
+                                        {/* Column 3: Contact */}
                     <div className="md:col-span-1">
                         <div className="text-xs font-semibold uppercase tracking-wider text-[#C9960C]/70 mb-4">Contact</div>
                         <ul className="space-y-3 text-sm">
-                            <li className="flex items-center gap-2.5">
-                                <Phone size={13} className="text-[#C9960C] shrink-0" />
-                                <a href="tel:0643690981" className="text-white/70 hover:text-[#C9960C] transition-colors">06 4369 0981</a>
+                            <li className="flex items-center gap-3">
+                                <Phone size={14} className="text-[#C9960C] shrink-0" />
+                                <a href="tel:0643690981" className="text-white/70 hover:text-[#C9960C] transition-colors leading-none">06 4369 0981</a>
                             </li>
-                            <li className="flex items-start gap-2.5">
-                                <Mail size={13} className="text-[#C9960C] mt-0.5 shrink-0" />
-                                <a href="mailto:info@klusbedrijf-eerlijkheid.nl" className="text-white/70 hover:text-[#C9960C] transition-colors break-all text-[13px]">info@klusbedrijf-eerlijkheid.nl</a>
+                            <li className="flex items-center gap-3">
+                                <Mail size={14} className="text-[#C9960C] shrink-0" />
+                                <a href="mailto:info@klusbedrijf-eerlijkheid.nl" className="text-white/70 hover:text-[#C9960C] transition-colors break-all text-[13px] leading-none">info@klusbedrijf-eerlijkheid.nl</a>
                             </li>
-                            <li className="text-white/50 pl-[21px]">Heel Nederland</li>
-                            <li className="text-white/50 pl-[21px]">Ma-Vr 08:00 - 17:00</li>
+                            <li className="text-white/50 pl-[22px]">Heel Nederland</li>
+                            <li className="text-white/50 pl-[22px]">Ma-Vr 08:00 - 17:00</li>
                         </ul>
                     </div>
                 </div>

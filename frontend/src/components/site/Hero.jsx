@@ -27,14 +27,16 @@ export default function Hero() {
                         Eerlijk advies. Vakkundige uitvoering. Vaste prijzen vooraf. Of het nu gaat om stukadoren, tegels zetten, renovatie, schilderwerk of een uitbouw — wij leveren kwaliteit waar u op kunt rekenen.
                     </p>
 
-                    {/* Diensten subtiel */}
+                    {/* Diensten subtiel — scrollbaar op mobiel */}
                     <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1.5">
                         <span className="text-xs font-medium text-[#2C3E50]/50 tracking-wide">Diensten:</span>
-                        {["Stukadoor","Tegels","Renovatie","Verf","Uitbouw"].map((d, i) => (
-                            <span key={i} className="text-xs font-medium text-[#2C3E50]/60 bg-[#2C3E50]/5 px-2.5 py-1 rounded-full">
-                                {d}
-                            </span>
-                        ))}
+                        <div className="flex flex-wrap gap-1.5">
+                            {["Stukadoor","Tegels","Renovatie","Verf","Uitbouw"].map((d, i) => (
+                                <span key={i} className="text-xs font-medium text-[#2C3E50]/60 bg-[#2C3E50]/5 px-2.5 py-1 rounded-full whitespace-nowrap">
+                                    {d}
+                                </span>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -56,23 +58,23 @@ export default function Hero() {
                         </a>
                     </div>
 
-                    {/* Trust row */}
-                    <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
-                        <div className="flex items-center gap-2">
-                            <div className="flex">
+                    {/* Trust row — beter gestapeld op mobiel */}
+                    <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2.5">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                            <div className="flex shrink-0">
                                 {[0,1,2,3,4].map(i => (
-                                    <Star key={i} size={12} className="text-[#FFD700] fill-[#FFD700]" />
+                                    <Star key={i} size={11} className="text-[#FFD700] fill-[#FFD700]" />
                                 ))}
                             </div>
-                            <span className="text-xs text-[#2C3E50]/70 font-medium">Tevreden klanten</span>
+                            <span className="text-xs text-[#2C3E50]/70 font-medium whitespace-nowrap">Tevreden klanten</span>
                         </div>
-                        <div className="text-xs text-[#2C3E50]/60 flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            Vaste prijzen
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                            <span className="text-xs text-[#2C3E50]/60 whitespace-nowrap">Vaste prijzen</span>
                         </div>
-                        <div className="text-xs text-[#2C3E50]/60 flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B] animate-pulse" />
-                            Heel Nederland
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B] shrink-0" />
+                            <span className="text-xs text-[#2C3E50]/60 whitespace-nowrap">Heel Nederland</span>
                         </div>
                     </div>
                 </div>
