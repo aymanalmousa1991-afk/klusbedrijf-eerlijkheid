@@ -1,0 +1,41 @@
+<svg id="logo1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 130" width="420" height="130">
+        <defs>
+          <linearGradient id="goldGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#D4A017"/>
+            <stop offset="50%" stop-color="#C9960C"/>
+            <stop offset="100%" stop-color="#8B6914"/>
+          </linearGradient>
+        </defs>
+
+        <!-- House icon -->
+        <g transform="translate(18, 10)">
+          <!-- Roof -->
+          <polygon points="52,8 100,42 4,42" fill="#B22222" stroke="none"/>
+          <!-- Chimney -->
+          <rect x="70" y="14" width="10" height="18" fill="#8B0000" rx="1"/>
+          <!-- House body -->
+          <rect x="14" y="42" width="76" height="56" fill="#fff" stroke="#B22222" stroke-width="3" rx="2"/>
+          <!-- Door -->
+          <rect x="36" y="62" width="20" height="36" fill="#B22222" rx="2"/>
+          <!-- Door knob -->
+          <circle cx="52" cy="81" r="2.5" fill="#C9960C"/>
+          <!-- Left window -->
+          <rect x="18" y="54" width="14" height="14" fill="#C9960C" rx="1" opacity="0.85"/>
+          <line x1="25" y1="54" x2="25" y2="68" stroke="#fff" stroke-width="1.5"/>
+          <line x1="18" y1="61" x2="32" y2="61" stroke="#fff" stroke-width="1.5"/>
+          <!-- Right window -->
+          <rect x="72" y="54" width="14" height="14" fill="#C9960C" rx="1" opacity="0.85"/>
+          <line x1="79" y1="54" x2="79" y2="68" stroke="#fff" stroke-width="1.5"/>
+          <line x1="72" y1="61" x2="86" y2="61" stroke="#fff" stroke-width="1.5"/>
+          <!-- Roof ridge line -->
+          <line x1="4" y1="42" x2="100" y2="42" stroke="#8B0000" stroke-width="2"/>
+        </g>
+
+        <!-- Text -->
+        <text x="140" y="62" font-family="Oswald, sans-serif" font-weight="700" font-size="38" letter-spacing="1" fill="#B22222">KLUSBEDRIJF</text>
+
+        <text x="142" y="93" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" letter-spacing="6" fill="url(#goldGrad1)">EERLIJKHEID</text>
+
+        <!-- Decorative line under subtitle -->
+        <line x1="140" y1="103" x2="400" y2="103" stroke="#C9960C" stroke-width="1.5" opacity="0.4"/>
+      </svg>

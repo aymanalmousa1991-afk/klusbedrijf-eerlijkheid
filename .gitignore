@@ -1,0 +1,19 @@
+# Environment variables
+backend/.env
+backend/venv/
+backend/requirements_temp.txt
+backend/__pycache__/
+backend/tests/
+
+# Frontend
+frontend/.env
+frontend/node_modules/
+frontend/build/
+
+# Emergent
+.emergent/
+memory/
+tests/
+test_reports/
+test_result.md
+design_guidelines.json

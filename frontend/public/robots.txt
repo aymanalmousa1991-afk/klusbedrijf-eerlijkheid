@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://klusbedrijf-eerlijkheid.nl/sitemap.xml
