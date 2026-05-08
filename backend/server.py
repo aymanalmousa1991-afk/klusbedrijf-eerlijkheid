@@ -192,7 +192,7 @@ Datum: {msg.created_at}
 @api_router.get("/company")
 async def get_company():
     """Static company info (KvK details from registration)."""
-        return {
+    return {
         "name": "Klusbedrijf Eerlijkheid",
         "owner": "Klusbedrijf Eerlijkheid",
         "kvk": "99765985",
@@ -223,9 +223,9 @@ async def create_review(review: dict, db: AsyncIOMotorDatabase = Depends(get_db)
         "text": review.get("text"),
         "rating": review.get("rating", 5),
         "created_at": datetime.now(timezone.utc),
-        "approved": False,
+                "approved": False,
     }
-        # Clean text: vervang \n door spatie
+    # Clean text: vervang \n door spatie
     if review_data["text"]:
         review_data["text"] = review_data["text"].replace("\\n", " ").replace("\n", " ").replace("\r", " ")
     result = await db.reviews.insert_one(review_data)
