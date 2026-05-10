@@ -1,4 +1,6 @@
 // Visual gallery strip — projecten van Klusbedrijf Eerlijkheid
+import { useTranslation } from "@/i18n/LanguageContext";
+
 const images = [
     '/assets/images/projecten/project-1.jpeg',
     '/assets/images/projecten/project-2.jpeg',
@@ -11,23 +13,22 @@ const images = [
 ];
 
 export default function GalleryStrip() {
+    const { t } = useTranslation();
     return (
         <section data-testid="gallery-strip" className="section-padding bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 mb-8 md:mb-10 reveal">
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                     <div>
                         <div className="font-mono text-xs tracking-[0.2em] uppercase text-[#B8860B] mb-2">
-                            / Ons werk in beeld
+                            / {t("gallery.badge")}
                         </div>
                         <h2 className="text-[#2C3E50]">
-                            Van plan tot oplevering. <br />
-                            <span className="text-[#B8860B]">Altijd strak werk.</span>
+                            {t("gallery.title1")} <br />
+                            <span className="text-[#B8860B]">{t("gallery.title2")}</span>
                         </h2>
                     </div>
                     <p className="md:max-w-md text-[#2C3E50]/65 text-sm md:text-base leading-relaxed">
-                        Een impressie van onze projecten: van stucwerk en
-                        tegelzetten tot complete renovaties en uitbouwen.
-                        Kwaliteit waar u op kunt rekenen.
+                        {t("gallery.subtitle")}
                     </p>
                 </div>
             </div>

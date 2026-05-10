@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Cookie, X } from "lucide-react";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 export default function CookieBanner() {
+    const { t } = useTranslation();
     const [show, setShow] = useState(false);
 
         useEffect(() => {
@@ -39,10 +41,10 @@ export default function CookieBanner() {
                         <Cookie size={20} />
                     </div>
                     <div>
-                        <div className="font-display text-lg uppercase tracking-tight">Cookies</div>
-                        <p className="text-sm text-white/70 leading-relaxed mt-1">
-                            We gebruiken alleen functionele cookies om de website te laten werken. Geen tracking.
-                        </p>
+                        <div className="font-display text-lg uppercase tracking-tight">{t("cookie.title")}</div>
+                            <p className="text-sm text-white/70 leading-relaxed mt-1">
+                                {t("cookie.text")}
+                            </p>
                     </div>
                 </div>
                 <div className="flex gap-2 mt-4">
@@ -51,14 +53,14 @@ export default function CookieBanner() {
                         data-testid="cookie-accept"
                         className="flex-1 bg-[#B8860B] hover:bg-[#9A7209] text-white font-semibold text-sm py-2.5 rounded-lg transition-colors"
                     >
-                        Akkoord
+                                                {t("cookie.accept")}
                     </button>
                     <button
                         onClick={decline}
                         data-testid="cookie-decline"
                         className="px-4 py-2.5 border border-white/20 hover:bg-white/10 text-sm rounded-lg transition-colors"
                     >
-                        Weiger
+                        {t("cookie.decline")}
                     </button>
                 </div>
             </div>

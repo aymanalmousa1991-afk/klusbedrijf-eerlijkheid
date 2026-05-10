@@ -1,27 +1,29 @@
 import { PaintBucket, Ruler, Home, Brush, Building2, Sparkles } from "lucide-react";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 const services = [
-    { icon: PaintBucket, title: "Stukadoor", desc: "Stucwerk, sierpleister, spachtelputz en stucco renovatie. Van nieuwbouw tot herstel — strak afgewerkt volgens uw wens." },
-    { icon: Ruler, title: "Tegels", desc: "Tegelzetwerk voor badkamer, keuken, vloeren en wanden. Met zorg gelegd, waterpas en duurzaam." },
-    { icon: Home, title: "Renovatie", desc: "Complete woningrenovatie: van keuken en badkamer tot volledige verdiepingen. Sfeer, kwaliteit en een heldere planning." },
-    { icon: Brush, title: "Verf & Schilderwerk", desc: "Binnen- en buitenschilderwerk. Professionele afwerking, strakke lijnen en duurzame verf van topmerken." },
-    { icon: Building2, title: "Uitbouw & Aanbouw", desc: "Woonkamer vergroten, dakopbouw of serre. Van vergunning tot oplevering — wij regelen alles." },
-    { icon: Sparkles, title: "Onderhoud & Reparatie", desc: "Kleine en grote reparaties: lekkages, scheuren, vochtplekken. Ook voor spoedklussen staan wij snel klaar." },
+    { icon: PaintBucket, titleKey: "services.stukadoor_title", descKey: "services.stukadoor_desc" },
+    { icon: Ruler, titleKey: "services.tegels_title", descKey: "services.tegels_desc" },
+    { icon: Home, titleKey: "services.renovatie_title", descKey: "services.renovatie_desc" },
+    { icon: Brush, titleKey: "services.verf_title", descKey: "services.verf_desc" },
+    { icon: Building2, titleKey: "services.uitbouw_title", descKey: "services.uitbouw_desc" },
+    { icon: Sparkles, titleKey: "services.onderhoud_title", descKey: "services.onderhoud_desc" },
 ];
 
 export default function Services() {
+    const { t } = useTranslation();
         return (
         <section id="diensten" data-testid="services-section" className="section-padding bg-white">
             <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
                 <div className="max-w-3xl section-title reveal">
                     <div className="inline-flex items-center gap-2 bg-[#B8860B]/10 text-[#B8860B] px-3 py-1 rounded-md text-xs font-bold tracking-wide uppercase mb-4 md:mb-5">
-                        Onze diensten
+                        {t("services.badge")}
                     </div>
                     <h2 className="text-[#2C3E50]">
-                        Alles voor uw <span className="text-[#B8860B]">huis & project</span>.
+                        {t("services.title")} <span className="text-[#B8860B]">{t("services.title_highlight")}</span>.
                     </h2>
                     <p className="mt-4 text-[15px] md:text-[17px] text-[#2C3E50]/65 leading-relaxed max-w-2xl">
-                        Van een enkele reparatie tot een complete verbouwing — wij denken met u mee en leveren maatwerk. Eerlijk advies, vaste prijs, vakkundig uitgevoerd.
+                        {t("services.subtitle")}
                     </p>
                 </div>
 
@@ -39,10 +41,10 @@ export default function Services() {
                                     <Icon size={22} strokeWidth={2} />
                                 </div>
                                 <h3 className="font-display text-xl md:text-2xl text-[#2C3E50] mb-2.5 leading-tight">
-                                    {s.title}
+                                    {t(s.titleKey)}
                                 </h3>
                                 <p className="text-sm text-[#2C3E50]/65 leading-relaxed">
-                                    {s.desc}
+                                    {t(s.descKey)}
                                 </p>
                             </div>
                         );

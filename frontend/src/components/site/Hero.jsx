@@ -1,7 +1,11 @@
 import { ArrowRight, Phone, ShieldCheck, Star } from "lucide-react";
+import { useTranslation } from "@/i18n/LanguageContext";
 const HERO_IMG = '/assets/images/hero/hero-main.jpg';
 
+const dienstenKeys = ["dienst.stukadoor", "dienst.tegels", "dienst.renovatie", "dienst.verf", "dienst.uitbouw"];
+
 export default function Hero() {
+    const { t } = useTranslation();
     return (
         <section
             id="top"
@@ -14,26 +18,26 @@ export default function Hero() {
                     <div className="inline-flex items-center gap-2 bg-[#B22222]/10 text-[#B22222] px-3 py-1.5 rounded-md mb-5">
                         <ShieldCheck size={13} />
                         <span className="text-[11px] font-bold tracking-wide uppercase">
-                            Vakkundig · Transparant · Vaste prijzen
+                            {t("hero.badge")}
                         </span>
                     </div>
 
                     <h1 className="font-display text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.04] tracking-tight text-[#2C3E50]">
-                        Uw huis verdient <br />
-                        <span className="text-gradient">vakwerk.</span>
+                        {t("hero.title1")} <br />
+                        <span className="text-gradient">{t("hero.title2")}</span>
                     </h1>
 
                     <p className="mt-5 max-w-xl text-[15px] md:text-[17px] text-[#2C3E50]/70 leading-relaxed">
-                        Eerlijk advies. Vakkundige uitvoering. Vaste prijzen vooraf. Of het nu gaat om stukadoren, tegels zetten, renovatie, schilderwerk of een uitbouw — wij leveren kwaliteit waar u op kunt rekenen.
+                        {t("hero.subtitle")}
                     </p>
 
                     {/* Diensten subtiel — scrollbaar op mobiel */}
                     <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1.5">
-                        <span className="text-xs font-medium text-[#2C3E50]/50 tracking-wide">Diensten:</span>
+                        <span className="text-xs font-medium text-[#2C3E50]/50 tracking-wide">{t("hero.diensten")}</span>
                         <div className="flex flex-wrap gap-1.5">
-                            {["Stukadoor","Tegels","Renovatie","Verf","Uitbouw"].map((d, i) => (
+                            {dienstenKeys.map((key, i) => (
                                 <span key={i} className="text-xs font-medium text-[#2C3E50]/60 bg-[#2C3E50]/5 px-2.5 py-1 rounded-full whitespace-nowrap">
-                                    {d}
+                                    {t(key)}
                                 </span>
                             ))}
                         </div>
@@ -45,7 +49,7 @@ export default function Hero() {
                             data-testid="hero-primary-cta"
                             className="group inline-flex items-center justify-center gap-2 bg-[#B22222] hover:bg-[#8B0000] text-white font-bold text-sm md:text-base px-7 py-3.5 rounded-md shadow-[0_8px_24px_-8px_rgba(178,34,34,0.45)] transition-all btn-glow"
                         >
-                            Vrijblijvende offerte
+                            {t("hero.cta")}
                             <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
                         </a>
                         <a
@@ -54,7 +58,7 @@ export default function Hero() {
                             className="inline-flex items-center justify-center gap-2 border-2 border-[#2C3E50] hover:bg-[#2C3E50] hover:text-white text-[#2C3E50] font-bold text-sm md:text-base px-7 py-3.5 rounded-md transition-colors"
                         >
                             <Phone size={15} />
-                            Bel direct
+                            {t("hero.bel")}
                         </a>
                     </div>
 
@@ -66,15 +70,15 @@ export default function Hero() {
                                     <Star key={i} size={11} className="text-[#FFD700] fill-[#FFD700]" />
                                 ))}
                             </div>
-                            <span className="text-xs text-[#2C3E50]/70 font-medium whitespace-nowrap">Tevreden klanten</span>
+                            <span className="text-xs text-[#2C3E50]/70 font-medium whitespace-nowrap">{t("hero.tevreden")}</span>
                         </div>
                         <div className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                            <span className="text-xs text-[#2C3E50]/60 whitespace-nowrap">Vaste prijzen</span>
+                            <span className="text-xs text-[#2C3E50]/60 whitespace-nowrap">{t("hero.vaste_prijzen")}</span>
                         </div>
                         <div className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B] shrink-0" />
-                            <span className="text-xs text-[#2C3E50]/60 whitespace-nowrap">Heel Nederland</span>
+                            <span className="text-xs text-[#2C3E50]/60 whitespace-nowrap">{t("hero.heel_nederland")}</span>
                         </div>
                     </div>
                 </div>
@@ -90,13 +94,13 @@ export default function Hero() {
                                 <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2.5 inline-flex items-center gap-2.5 shadow-soft">
                                     <span className="w-2 h-2 rounded-full bg-[#B8860B] animate-pulse" />
                                     <span className="text-[11px] font-bold uppercase tracking-wider text-[#2C3E50]">
-                                        Door heel Nederland
+                                        {t("hero.door_heel")}
                                     </span>
                                 </div>
                             </div>
                         </div>
                         <div className="absolute -bottom-4 -right-3 md:-right-4 bg-[#2C3E50] text-white border-2 border-[#B8860B] rounded-xl p-3.5 shadow-elevated">
-                            <div className="text-[9px] uppercase tracking-wider text-white/55 mb-0.5 font-mono">Reactietijd</div>
+                            <div className="text-[9px] uppercase tracking-wider text-white/55 mb-0.5 font-mono">{t("hero.reactietijd")}</div>
                             <div className="font-display text-2xl text-[#B8860B] leading-none">&lt; 24<span className="text-sm text-white/70 font-bold">u</span></div>
                         </div>
                     </div>

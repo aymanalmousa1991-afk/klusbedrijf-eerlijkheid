@@ -1,10 +1,11 @@
-import { Award, ShieldCheck, BadgeCheck, FileBadge, Hammer, Building } from "lucide-react";
+import { Award, ShieldCheck, BadgeCheck, FileBadge } from "lucide-react";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 const certs = [
-    { icon: ShieldCheck, title: "VCA**", subtitle: "Veiligheid Checklist Aannemers" },
-    { icon: BadgeCheck, title: "BRL 0501", subtitle: "Stuc- en tegelwerk norm" },
-    { icon: FileBadge, title: "Verzekerd", subtitle: "Beroepsaansprakelijkheid" },
-    { icon: Award, title: "Ervaring", subtitle: "Jarenlange vakkennis" },
+    { icon: ShieldCheck, titleKey: "certs.cert1_title", subtitleKey: "certs.cert1_sub" },
+    { icon: BadgeCheck, titleKey: "certs.cert2_title", subtitleKey: "certs.cert2_sub" },
+    { icon: FileBadge, titleKey: "certs.cert3_title", subtitleKey: "certs.cert3_sub" },
+    { icon: Award, titleKey: "certs.cert4_title", subtitleKey: "certs.cert4_sub" },
 ];
 
 const partners = [
@@ -21,19 +22,20 @@ const partners = [
 ];
 
 export default function Certifications() {
+    const { t } = useTranslation();
     const partnerList = [...partners, ...partners];
     return (
         <section id="certificeringen" data-testid="certifications-section" className="section-padding bg-white">
             <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
                 <div className="text-center max-w-3xl mx-auto section-title reveal">
-                    <div className="inline-flex items-center gap-2 bg-[#B8860B]/10 text-[#B8860B] px-3 py-1 rounded-md text-xs font-bold tracking-wide uppercase mb-4 md:mb-5">
-                        Certificeringen
+                                        <div className="inline-flex items-center gap-2 bg-[#B8860B]/10 text-[#B8860B] px-3 py-1 rounded-md text-xs font-bold tracking-wide uppercase mb-4 md:mb-5">
+                        {t("certs.badge")}
                     </div>
                     <h2 className="text-[#2C3E50]">
-                        Officieel <span className="text-[#B8860B]">erkend</span>.
+                        {t("certs.title1")} <span className="text-[#B8860B]">{t("certs.title2")}</span>.
                     </h2>
                     <p className="mt-4 text-[15px] md:text-[17px] text-[#2C3E50]/70 max-w-xl mx-auto">
-                        Werken volgens de Nederlandse normen voor vakmanschap en veiligheid.
+                        {t("certs.subtitle")}
                     </p>
                 </div>
 
@@ -50,11 +52,11 @@ export default function Certifications() {
                                 <div className="w-14 h-14 rounded-2xl bg-[#2C3E50] text-[#B8860B] flex items-center justify-center mx-auto mb-4">
                                     <Icon size={24} strokeWidth={1.75} />
                                 </div>
-                                <div className="font-display text-xl md:text-2xl text-[#2C3E50] tracking-tight mb-1">
-                                    {c.title}
+                                                                <div className="font-display text-xl md:text-2xl text-[#2C3E50] tracking-tight mb-1">
+                                    {t(c.titleKey)}
                                 </div>
                                 <div className="text-xs md:text-sm text-[#2C3E50]/60">
-                                    {c.subtitle}
+                                    {t(c.subtitleKey)}
                                 </div>
                             </div>
                         );
@@ -65,8 +67,8 @@ export default function Certifications() {
                 <div className="reveal">
                     <div className="text-center mb-8">
                         <div className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]/55">
-                            Vertrouwd door opdrachtgevers in heel Nederland
-                        </div>
+                                {t("certs.partners")}
+                            </div>
                     </div>
                     <div className="relative overflow-hidden border-y border-gray-200 bg-[#F5F7FA] py-6">
                         <div className="flex gap-12 md:gap-16 whitespace-nowrap animate-marquee w-max items-center">
