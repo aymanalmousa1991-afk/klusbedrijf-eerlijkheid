@@ -26,6 +26,32 @@ db = client[os.environ['DB_NAME']]
 
 app = FastAPI(title="Klusbedrijf Eerlijkheid API")
 
+# ----- Self-ping om Render wakker te houden -----
+import asyncio
+
+SELF_URL = os.environ.get("RENDER_EXTERNAL_URL", "")
+
+async def keep_alive():
+    """Ping onszelf elke 5 minuten zodat Render niet in slaapstand gaat."""
+    if not SELF_URL:
+        logger.warning("Geen RENDER_EXTERNAL_URL ingesteld — self-ping uitgeschakeld.")
+        return
+    while True:
+        await asyncio.sleep(300)  # 5 minuten
+        try:
+            import httpx
+            async with httpx.AsyncClient(timeout=10) as client:
+                resp = await client.get(f"{SELF_URL}/api/")
+                logger.info(f"Self-ping OK — status {resp.status_code}")
+        except Exception as e:
+            logger.warning(f"Self-ping mislukt: {e}")
+
+@app.on_event("startup")
+async def start_keep_alive():
+    if SELF_URL:
+        asyncio.create_task(keep_alive())
+        logger.info(f"Self-ping gestart naar {SELF_URL}")
+
 # CORS middleware - handel OPTIONS preflight en voeg headers toe
 @app.middleware("http")
 async def add_cors_headers(request: Request, call_next):
