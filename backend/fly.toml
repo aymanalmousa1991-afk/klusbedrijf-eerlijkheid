@@ -2,9 +2,6 @@
 app = "klusbedrijf-eerlijkheid-api"
 primary_region = "fra"
 
-[build]
-  builder = "heroku/buildpacks:20"
-
 [http_service]
   internal_port = 8000
   force_https = true
